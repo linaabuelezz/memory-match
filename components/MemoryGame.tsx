@@ -128,17 +128,19 @@ export default function MemoryGame() {
   }
   
   useEffect(() => {
-    let interval: NodeJS.Timeout;
+    let interval: NodeJS.Timeout | null = null;
 
     if (gameStarted && !gameOver) {
       interval = setInterval(() => {
         setSeconds(prevSeconds => prevSeconds + 1);
       }, 1000);
-    } else if (gameOver && interval) {
-      clearInterval(interval);
     }
 
-    return () => clearInterval(interval);
+    return () => {
+      if (interval) {
+        clearInterval(interval);
+      }
+    };
   }, [gameStarted, gameOver]);
 
   return (
