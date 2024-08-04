@@ -65,7 +65,6 @@ export default function MemoryGame() {
     async function fetchUsers() {
       const res = await fetch('/api/users');
       const data: User[] = await res.json();
-      // Sort users by attempts in ascending order
       data.sort((a, b) => a.attempts - b.attempts);
       setUsers(data);
       console.log(data);
