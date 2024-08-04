@@ -113,7 +113,7 @@ export default function MemoryGame() {
       console.log(name, email, attempts);
       const updatedUser = await addUser(name, email, attempts);
       console.log('User added or updated:', updatedUser);
-      setErrorMessage(''); // Clear error message on successful save
+      setErrorMessage(''); 
     } catch (error) {
       console.error('Error adding or updating user:', error);
     }
@@ -169,7 +169,7 @@ export default function MemoryGame() {
               required
             />
           </div>
-          <button type="submit" className="flex p-5 bg-slate-500 rounded-md mt-5">Start Game</button>
+          <button type="submit" className="flex p-5 bg-slate-500 rounded-md mt-5 ml-16">Start Game</button>
         </form>
       ) : (
         <>
