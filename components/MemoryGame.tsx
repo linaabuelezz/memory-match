@@ -1,9 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-
-// const { PrismaClient } = require('@prisma/client');
-// const prisma = new PrismaClient();
+import UserForm from './UserForm';
 
 type User = {
   id: string;
@@ -60,6 +58,7 @@ export default function MemoryGame() {
   const [email, setEmail] = useState('');
   const [users, setUsers] = useState<User[]>([]);
   const [errorMessage, setErrorMessage] = useState('');
+  
 
   useEffect(() => {
     async function fetchUsers() {
@@ -100,7 +99,9 @@ export default function MemoryGame() {
 
   const gameOver = cards.length === solved.length;
 
-  const handleStart = () => {
+  const handleStart = (name: string, email: string) => {
+    setName(name);
+    setEmail(email);
     setGameStarted(true);
   }
 
@@ -143,34 +144,13 @@ export default function MemoryGame() {
   }, [gameStarted, gameOver]);
 
   return (
-    <div className="text-center">
-      {!gameStarted ? (
-        <form className="mt-5" onSubmit={(e) => { e.preventDefault(); handleStart(); }}>
-          <h2 className="font-bold text-white text-3xl">Enter Your Details</h2>
-          <div className="mt-5">
-            <input
-              type="text"
-              placeholder="Name"
-              name="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="p-2 rounded-md"
-              required
-            />
-          </div>
-          <div className="mt-3">
-            <input
-              type="email"
-              placeholder="Email"
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="p-2 rounded-md"
-              required
-            />
-          </div>
-          <button type="submit" className="flex p-5 bg-slate-500 rounded-md mt-5 ml-16">Start Game</button>
-        </form>
+    <div className="relative min-h-screen">
+    {!gameStarted ? (
+      <div className="bg-cover h-screen w-screen bg-center bg-no-repeat" style={{ backgroundImage: 'url(/bg1.webp)' }}>
+        <div className="text-center py-10">
+          <UserForm onStart={handleStart}/>
+        </div>
+      </div>
       ) : (
         <>
           <h2 className="font-bold text-white text-3xl">Memory Matcher</h2>
