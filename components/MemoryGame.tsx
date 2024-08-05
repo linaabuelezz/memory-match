@@ -167,7 +167,7 @@ export default function MemoryGame() {
             }}
           >
             <h2 className="font-bold text-white text-3xl glow-animation">Memory Matcher</h2>
-            <div className="text-white mt-3">
+            <div className="text-white mt-3 flex justify-center space-x-4">
               <p>Time: {Math.floor(seconds / 60)}:{String(seconds % 60).padStart(2, '0')}</p>
               <p>Attempts: {attempts}</p>
             </div>
@@ -176,11 +176,11 @@ export default function MemoryGame() {
               {cards.map((card, index) => (
                 <div
                   key={index}
-                  className={`relative w-28 h-28 text-black font-bold text-3xl transform bg-slate-200 flex justify-center items-center cursor-pointer transition-transform duration-300 ${flipped.includes(index) || solved.includes(index) ? "rotate-180" : ""}`}
+                  className={`relative w-28 h-28 text-black font-bold text-3xl transform border-2 border-white rounded-md bg-slate-200 flex justify-center items-center cursor-pointer transition-transform duration-300 ${flipped.includes(index) || solved.includes(index) ? "rotate-180" : ""}`}
                   onClick={() => handleClick(index)}
                 >
                   {flipped.includes(index) || solved.includes(index) ? (
-                    <Image className="rotate-180" src={`/memory-cards/${card}.jpg`} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" alt={`${card}`} />
+                    <Image className="rotate-180 rounded-md" src={`/memory-cards/${card}.jpg`} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" alt={`${card}`} />
                   ) : (
                     "?"
                   )}
@@ -188,7 +188,7 @@ export default function MemoryGame() {
               ))}
             </div>
             <button
-              className={`flex p-5 rounded-md mt-5 mx-auto ${gameOver ? 'bg-slate-500' : 'bg-gray-400 cursor-not-allowed'}`}
+              className={`font-semibold flex p-3 rounded-md mt-5 mx-auto ${gameOver ? 'bg-gradient-to-r from-indigo-500 to-pink-300' : 'bg-gradient-to-r from-teal-500 to-cyan-500 cursor-not-allowed'}`}
               onClick={saveScore}
               disabled={!gameOver}
             >
