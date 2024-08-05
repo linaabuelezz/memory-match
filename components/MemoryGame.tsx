@@ -172,7 +172,7 @@ export default function MemoryGame() {
               <p>Attempts: {attempts}</p>
             </div>
             {gameOver && <h2 className="p-5 font-bold text-red-500 text-2xl">YOU WIN!</h2>}
-            <div className="grid grid-cols-4 gap-5 mt-5 max-w-screen-sm mx-auto">
+            <div className="grid grid-cols-4 gap-5 mt-5 max-w-screen-sm mx-auto pl-7">
               {cards.map((card, index) => (
                 <div
                   key={index}
