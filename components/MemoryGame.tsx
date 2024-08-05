@@ -145,50 +145,64 @@ export default function MemoryGame() {
 
   return (
     <div className="relative min-h-screen">
-    {!gameStarted ? (
-      <div className="bg-cover h-screen w-screen bg-center bg-no-repeat" style={{ backgroundImage: 'url(/bg1.webp)' }}>
-        <div className="text-center py-10">
-          <UserForm onStart={handleStart}/>
+      {!gameStarted ? (
+        <div 
+          className="bg-cover h-screen w-screen bg-center bg-no-repeat"
+          style={{ 
+            backgroundImage: 'url(/bg1.webp)' 
+          }}
+        >
+          <div className="text-center py-10">
+            <UserForm onStart={handleStart}/>
+          </div>
         </div>
-      </div>
       ) : (
         <>
-          <h2 className="font-bold text-white text-3xl">Memory Matcher</h2>
-          <div className="text-white mt-3">
-            <p>Time: {Math.floor(seconds / 60)}:{String(seconds % 60).padStart(2, '0')}</p>
-            <p>Attempts: {attempts}</p>
-          </div>
-          {gameOver && <h2 className="p-5 font-bold text-red-500 text-2xl">YOU WIN!</h2>}
-          <div className="grid grid-cols-4 gap-5 mt-5">
-            {cards.map((card, index) => (
-              <div
-                key={index}
-                className={`relative w-28 h-28 text-black font-bold text-3xl transform bg-slate-200 flex justify-center items-center cursor-pointer transition-transform duration-300 ${flipped.includes(index) || solved.includes(index) ? "rotate-180" : ""}`}
-                onClick={() => handleClick(index)}
-              >
-                {flipped.includes(index) || solved.includes(index) ? (
-                  <Image className="rotate-180" src={`/memory-cards/${card}.jpg`} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" alt={`${card}`} />
-                ) : (
-                  "?"
-                )}
-              </div>
-            ))}
-          </div>
-          <button
-            className={`flex p-5 rounded-md mt-5 ${gameOver ? 'bg-slate-500' : 'bg-gray-400 cursor-not-allowed'}`}
-            onClick={saveScore}
-            disabled={!gameOver}
+          <div
+            className="relative min-h-screen w-screen bg-cover bg-center bg-no-repeat pl-8 text-center"
+            style={{ 
+              backgroundImage: 'url(/bg1.webp)',
+              backgroundAttachment: 'fixed',
+              backgroundSize: 'cover'
+            }}
           >
-            Save Score
-          </button>
-          {errorMessage && <p className="text-red-500 mt-2">{errorMessage}</p>}
-          <div className="mt-5">
-            <h3 className="font-bold text-black text-2xl">Leaderboard</h3>
-            <ul>
-              {users.map((user, index) => (
-                <li key={user.id}>{index + 1}. {user.name} - {user.attempts}</li>
+            <h2 className="font-bold text-white text-3xl glow-animation">Memory Matcher</h2>
+            <div className="text-white mt-3">
+              <p>Time: {Math.floor(seconds / 60)}:{String(seconds % 60).padStart(2, '0')}</p>
+              <p>Attempts: {attempts}</p>
+            </div>
+            {gameOver && <h2 className="p-5 font-bold text-red-500 text-2xl">YOU WIN!</h2>}
+            <div className="grid grid-cols-4 gap-5 mt-5 max-w-screen-sm mx-auto">
+              {cards.map((card, index) => (
+                <div
+                  key={index}
+                  className={`relative w-28 h-28 text-black font-bold text-3xl transform bg-slate-200 flex justify-center items-center cursor-pointer transition-transform duration-300 ${flipped.includes(index) || solved.includes(index) ? "rotate-180" : ""}`}
+                  onClick={() => handleClick(index)}
+                >
+                  {flipped.includes(index) || solved.includes(index) ? (
+                    <Image className="rotate-180" src={`/memory-cards/${card}.jpg`} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" alt={`${card}`} />
+                  ) : (
+                    "?"
+                  )}
+                </div>
               ))}
-            </ul>
+            </div>
+            <button
+              className={`flex p-5 rounded-md mt-5 mx-auto ${gameOver ? 'bg-slate-500' : 'bg-gray-400 cursor-not-allowed'}`}
+              onClick={saveScore}
+              disabled={!gameOver}
+            >
+              Save Score
+            </button>
+            {errorMessage && <p className="text-red-500 mt-2">{errorMessage}</p>}
+            <div className="mt-5">
+              <h3 className="font-bold text-white text-2xl">Leaderboard</h3>
+              <ul>
+                {users.map((user, index) => (
+                  <li className="text-white" key={user.id}>{index + 1}. {user.name} - {user.attempts}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         </>
       )}
