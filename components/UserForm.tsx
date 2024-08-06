@@ -27,6 +27,7 @@ export default function UserForm({ onStart }: UserFormProps) {
           onChange={(e) => setName(e.target.value)}
           className="p-2 rounded-md"
           required
+          autoComplete='John Doe'
         />
       </div>
       <div className="mt-3">
@@ -38,6 +39,7 @@ export default function UserForm({ onStart }: UserFormProps) {
           onChange={(e) => setEmail(e.target.value)}
           className="p-2 rounded-md"
           required
+          autoComplete='johndoe@gmail.com'
         />
       </div>
       <button 
