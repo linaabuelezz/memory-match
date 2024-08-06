@@ -6,7 +6,7 @@ import UserForm from './UserForm';
 import { useLeaderboard, LeaderboardProvider } from '@/contexts/LeaderboardContext';
 import LeaderboardModal from './LeaderboardModal';
 
-type User = {
+export type User = {
   id: string;
   name: string;
   email: string;
