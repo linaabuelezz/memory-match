@@ -4,6 +4,7 @@ import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { User } from './MemoryGame';
 import { useEffect, useState } from "react";
+import { SVGProps } from 'react';
 
 // Fetches a unique avatar URL from Lorem Picsum
 const fetchAvatar = async (size: number, seed: string) => {
@@ -87,7 +88,7 @@ const LeaderboardModal: React.FC<LeaderboardModalProps> = ({ users, closeLeaderb
 export default LeaderboardModal;
 
 // Icon components
-function XIcon(props) {
+function XIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -107,7 +108,7 @@ function XIcon(props) {
   )
 }
 
-function TrophyIcon(props) {
+function TrophyIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
