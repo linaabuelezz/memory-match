@@ -171,7 +171,7 @@ function MemoryGame() {
                 backgroundSize: 'cover'
               }}
             >
-              <h2 className="font-bold text-white text-3xl glow-animation">Memory Matcher</h2>
+              <h2 className="font-bold pt-3 text-white text-3xl glow-animation">Memory Matcher</h2>
               <div className="text-white mt-3 flex justify-center space-x-4">
                 <p>Time: {Math.floor(seconds / 60)}:{String(seconds % 60).padStart(2, '0')}</p>
                 <p>Attempts: {attempts}</p>
@@ -193,12 +193,12 @@ function MemoryGame() {
                 ))}
               </div>
               <div className="flex justify-center mt-10">
-                <button onClick={saveScore} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Save Score</button>
+                <button onClick={saveScore} className={`font-semibold flex p-3 rounded-md mt-5 mx-auto ${gameOver ? 'bg-gradient-to-r from-indigo-500 to-pink-300' : 'bg-gradient-to-r from-teal-500 to-cyan-500 cursor-not-allowed'}`}>Save Score</button>
               </div>
               {errorMessage && (
                 <div className="mt-5 text-red-500 text-lg">{errorMessage}</div>
               )}
-              <button onClick={openLeaderboard} className="px-4 py-2 mt-5 bg-green-500 text-white rounded hover:bg-green-600">View Leaderboard</button>
+              <button onClick={openLeaderboard} className="px-4 py-2 mt-5 mb-5 bg-green-500 text-white rounded-md hover:bg-green-600">View Leaderboard</button>
             </div>
             {isOpen && <LeaderboardModal users={users} closeLeaderboard={closeLeaderboard} />}
           </>
