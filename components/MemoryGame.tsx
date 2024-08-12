@@ -181,7 +181,7 @@ function MemoryGame() {
                 {cards.map((card, index) => (
                   <div
                     key={index}
-                    className={`relative w-28 h-28 text-black font-bold text-3xl transform border-2 border-white rounded-md bg-slate-200 flex justify-center items-center cursor-pointer transition-transform duration-300 ${flipped.includes(index) || solved.includes(index) ? "rotate-180" : ""}`}
+                    className={`relative w-20 h-20 sm:w-15 sm:h-15 md:w-28 md:h-28 max-w-sm:max-w-24 max-w-md:max-w-28 text-black font-bold text-xl sm:text-3xl transform border-2 border-white rounded-md bg-slate-200 flex justify-center items-center cursor-pointer transition-transform duration-300 ${flipped.includes(index) || solved.includes(index) ? "rotate-180" : ""}`}
                     onClick={() => handleClick(index)}
                   >
                     {flipped.includes(index) || solved.includes(index) ? (
