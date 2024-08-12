@@ -164,7 +164,7 @@ function MemoryGame() {
         ) : (
           <>
             <div
-              className="relative min-h-screen w-screen bg-cover bg-center bg-no-repeat pl-8 text-center"
+              className="relative min-h-screen w-screen bg-cover bg-center bg-no-repeat md:pl-2 pl-2 text-center"
               style={{ 
                 backgroundImage: 'url(/bg1.webp)',
                 backgroundAttachment: 'fixed',
