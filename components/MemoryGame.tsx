@@ -171,9 +171,9 @@ function MemoryGame() {
                 backgroundSize: 'cover'
               }}
             >
-              <h2 className="font-bold pt-3 text-white text-3xl glow-animation">Memory Matcher</h2>
+              <h2 className="font-bold pt-3 text-white text-3xl glow-animation ml-6">Memory Matcher</h2>
               <div className="text-white mt-3 flex justify-center space-x-4">
-                <p>Time: {Math.floor(seconds / 60)}:{String(seconds % 60).padStart(2, '0')}</p>
+                <p className="ml-6">Time: {Math.floor(seconds / 60)}:{String(seconds % 60).padStart(2, '0')}</p>
                 <p>Attempts: {attempts}</p>
               </div>
               {gameOver && <h2 className="p-5 font-bold text-red-500 text-2xl">YOU WIN!</h2>}
@@ -193,12 +193,12 @@ function MemoryGame() {
                 ))}
               </div>
               <div className="flex justify-center mt-10">
-                <button onClick={saveScore} className={` ml-6 font-semibold flex p-3 rounded-md mt-5 mx-auto ${gameOver ? 'bg-gradient-to-r from-indigo-500 to-pink-300' : 'bg-gradient-to-r from-teal-500 to-cyan-500 cursor-not-allowed'}`}>Save Score</button>
+                <button onClick={saveScore} className={`ml-36 font-semibold flex p-3 rounded-md mt-5 mx-auto ${gameOver ? 'bg-gradient-to-r from-indigo-500 to-pink-300' : 'bg-gradient-to-r from-teal-500 to-cyan-500 cursor-not-allowed'}`}>Save Score</button>
               </div>
               {errorMessage && (
                 <div className="mt-5 text-red-500 text-lg">{errorMessage}</div>
               )}
-              <button onClick={openLeaderboard} className=" ml-6 px-4 py-2 mt-5 mb-5 bg-green-500 text-white rounded-md hover:bg-green-600">View Leaderboard</button>
+              <button onClick={openLeaderboard} className=" ml-8 px-4 py-2 mt-5 mb-5 bg-green-500 text-white rounded-md hover:bg-green-600">View Leaderboard</button>
             </div>
             {isOpen && <LeaderboardModal users={users} closeLeaderboard={closeLeaderboard} />}
           </>
