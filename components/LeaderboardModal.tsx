@@ -54,7 +54,6 @@ const LeaderboardModal: React.FC<LeaderboardModalProps> = ({ users, closeLeaderb
               <TableRow>
                 <TableHead>Avatar</TableHead>
                 <TableHead>Name</TableHead>
-                <TableHead>Email</TableHead>
                 <TableHead>Attempts</TableHead>
               </TableRow>
             </TableHeader>
@@ -71,8 +70,7 @@ const LeaderboardModal: React.FC<LeaderboardModalProps> = ({ users, closeLeaderb
                     </Avatar>
                   </TableCell>
                   <TableCell>{user.name}</TableCell>
-                  <TableCell>{user.email}</TableCell>
-                  <TableCell className="flex items-center justify-center">
+                  <TableCell className="pl-11">
                     {user.attempts}
                   </TableCell>
                 </TableRow>
