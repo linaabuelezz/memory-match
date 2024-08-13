@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import UserForm from './UserForm';
 import { useLeaderboard, LeaderboardProvider } from '@/contexts/LeaderboardContext';
 import LeaderboardModal from './LeaderboardModal';
+import {Tooltip} from "@nextui-org/tooltip";
 
 export type User = {
   id: string;
@@ -193,12 +194,16 @@ function MemoryGame() {
                 ))}
               </div>
               <div className="flex justify-center mt-10">
-                <button onClick={saveScore} className={`max-ml-sm:max-ml-auto sm:ml-36 md:ml-52 lg:ml-auto font-semibold flex p-3 rounded-md mt-5 mx-auto ${gameOver ? 'bg-gradient-to-r from-indigo-500 to-pink-300' : 'bg-gradient-to-r from-teal-500 to-cyan-500 cursor-not-allowed'}`}>Save Score</button>
+              { !gameOver && (
+                  <Tooltip className="bg-white p-1 rounded-md text-red-600 font-semibold" content="You need to finish the game to save your score!">
+                    <button onClick={saveScore} className={`text-white max-ml-sm:max-ml-auto sm:ml-36 md:ml-52 lg:ml-auto font-semibold flex p-3 rounded-md mt-4 mx-auto ${gameOver ? 'bg-gradient-to-r from-indigo-500 to-pink-300' : 'bg-gradient-to-r from-teal-700 to-cyan-400 cursor-not-allowed'}`}>Save Score</button>
+                  </Tooltip>
+                )}
+                {gameOver && (
+                  <button onClick={saveScore} className={`text-white max-ml-sm:max-ml-auto sm:ml-36 md:ml-52 lg:ml-auto font-semibold flex p-3 rounded-md mt-4 mx-auto ${gameOver ? 'bg-gradient-to-r from-indigo-500 to-pink-300' : 'bg-gradient-to-r from-teal-700 to-cyan-400 cursor-not-allowed hover:scale-110'}`}>Save Score</button>
+                )}
               </div>
-              {errorMessage && (
-                <div className="mt-5 text-red-500 text-lg">{errorMessage}</div>
-              )}
-              <button onClick={openLeaderboard} className=" ml-auto px-4 py-2 mt-5 mb-5 bg-green-500 text-white rounded-md hover:bg-green-600">View Leaderboard</button>
+              <button onClick={openLeaderboard} className="font-semibold ml-auto px-4 py-2 mt-5 mb-5 text-white rounded-md transition-transform transform hover:scale-110 bg-gradient-to-r from-green-700 to-lime-500 hover:from-green-900 hover:to-lime-700 focus:outline-none focus:ring-2 focus:ring-teal-300">View Leaderboard</button>
             </div>
             {isOpen && <LeaderboardModal users={users} closeLeaderboard={closeLeaderboard} />}
           </>
